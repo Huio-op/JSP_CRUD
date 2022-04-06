@@ -3,6 +3,7 @@ const validate = (form) => {
 
 
     const formFields = form.serializeArray();
+    console.log('formmmmm', formFields)
     let error = { field: '', msg: '', isValid: true };
     $.each(formFields, (i, field) => {
         const validators = form[0][i].validity;
@@ -35,6 +36,8 @@ const validate = (form) => {
         }
     });
 
+    console.log('aooooooo', error)
+
     if (error.isValid) {
         return true;
         alert(`Seu cadasro foi concluído!`);
@@ -46,7 +49,7 @@ const validate = (form) => {
 }
 
 const validateEmail = (value) => {
-    let error = {};
+    let error = { field: '', msg: '', isValid: true };
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
         error.isValid = false;
         error.field = 'email';

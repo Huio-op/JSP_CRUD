@@ -41,10 +41,13 @@ public class DBConnection {
     public void connect() throws DataBaseException {
 
         try{
+            Class.forName("org.postgresql.Driver");
             this.connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DataBaseException("Falha na conexão com o servidor!");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
     }

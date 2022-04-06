@@ -1,4 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ page import="com.br.dao.DBConnection" %>
+<%@ page import="com.br.dao.DBBook" %>
+<%@ page import="com.br.model.Book" %>
 <html>
 <head>
     <title>Cadastro</title>
@@ -23,11 +27,11 @@
 </head>
 <body>
 <div class="CadastroCard">
-    <form>
+    <form action="cadastro" method="post" onsubmit="return validate($(form))">
         <h1>Cadastro</h1>
         <div class="mb-3">
             <label for="name" class="form-label">Nome do Livro</label>
-            <input type="text" class="form-control" name="name" />
+            <input type="text" class="form-control" name="bookName" />
         </div>
         <div class="mb-3" style="width: 100%">
             <label class="control-label" id="campo">Data de Publicação</label>
@@ -46,8 +50,8 @@
                     aria-describedby="emailHelp"
             />
         </div>
-        <button type="button" onclick="validate() ? " class="btn btn-primary">
-            Submit
+        <button type="submit" class="btn btn-primary">
+            Criar
         </button>
         <a href="/">
             <button type="button" class="btn btn-primary">
