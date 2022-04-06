@@ -19,3 +19,11 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+.ListagemCard th {
+    padding: 0 15px;
+}
+
+.ListagemCard th:not(th:last-of-type) {
+    border-right: 3px solid #2E4052;
+}

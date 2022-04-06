@@ -28,9 +28,9 @@
 <body>
 <div class="CadastroCard">
     <form action="cadastro" method="post" onsubmit="return validate($(form))">
-        <h1>Cadastro</h1>
+        <h1>Cadastre seu Livro</h1>
         <div class="mb-3">
-            <label for="name" class="form-label">Nome do Livro</label>
+            <label class="form-label">Nome do Livro</label>
             <input type="text" class="form-control" name="bookName" />
         </div>
         <div class="mb-3" style="width: 100%">
@@ -38,11 +38,15 @@
             <input type="date" class="form-control" name="publishDate" />
         </div>
         <div class="mb-3" style="width: 100%">
+            <label class="control-label" id="campo">Nome do Autor</label>
+            <input type="text" class="form-control" name="authorName"/>
+        </div>
+        <div class="mb-3" style="width: 100%">
             <label class="control-label" id="campo">CPF do Autor</label>
             <input id="cpf" type="text" class="form-control" name="cpf" maxlength="11" oninput="cpfMask(this)" />
         </div>
         <div class="mb-3">
-            <label for="email" class="form-label">Email de Contato</label>
+            <label class="form-label">Email de Contato</label>
             <input
                     type="email"
                     class="form-control"

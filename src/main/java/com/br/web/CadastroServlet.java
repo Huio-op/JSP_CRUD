@@ -36,6 +36,7 @@ public class CadastroServlet extends HttpServlet {
             book.setBookName(request.getParameter("bookName"));
             book.setPublishDate(Date.valueOf(request.getParameter("publishDate")));
             book.setEmail(request.getParameter("email"));
+            book.setAuthorName(request.getParameter("authorName"));
 
             if (dao.save(book)) {
                 response.sendRedirect("/pages/listagem.jsp");

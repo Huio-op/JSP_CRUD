@@ -25,8 +25,8 @@ public class DBBook {
         if(book != null) {
 
             try {
-                connection.runSQL("INSERT INTO book(cpf, email, publishdate, bookname) VALUES( '" + book.getCpf() + "', '"+book.getEmail()+"', " +
-                        "'"+book.getPublishDate()+"', '"+book.getBookName()+"');");
+                connection.runSQL("INSERT INTO book(cpf, email, publishdate, bookname, authorname) VALUES( '" + book.getCpf() + "', '"+book.getEmail()+"', " +
+                        "'"+book.getPublishDate()+"', '"+book.getBookName()+"', '" + book.getAuthorName() + "');");
                 return true;
             } catch (DataBaseException e) {
                 e.printStackTrace();
@@ -73,8 +73,9 @@ public class DBBook {
             String bookName = rs.getString("bookName");
             String cpf = rs.getString("cpf");
             Date publishDate = rs.getDate("publishDate");
+            String authorName = rs.getString("authorname");
 
-            b = new Book(cpf,bookName,publishDate,email);
+            b = new Book(cpf,bookName,publishDate,email, authorName);
 
         }
 
@@ -96,8 +97,9 @@ public class DBBook {
                 String bookName = rs.getString("bookName");
                 String cpf = rs.getString("cpf");
                 Date publishDate = rs.getDate("publishDate");
+                String authorName = rs.getString("authorname");
 
-                Book b = new Book(cpf,bookName,publishDate,email);
+                Book b = new Book(cpf,bookName,publishDate,email, authorName);
                 array.add(b);
             }
         }

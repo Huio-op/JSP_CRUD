@@ -8,16 +8,18 @@ public class Book {
     private String bookName;
     private Date publishDate;
     private String email;
+    private String authorName;
 
     public Book() {
 
     }
 
-    public Book(String cpf, String bookName, Date publishDate, String email) {
+    public Book(String cpf, String bookName, Date publishDate, String email, String authorName) {
         this.cpf = cpf;
         this.bookName = bookName;
         this.publishDate = publishDate;
         this.email = email;
+        this.authorName = authorName;
     }
 
     public String getCpf() {
@@ -50,5 +52,13 @@ public class Book {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 }

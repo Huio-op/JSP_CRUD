@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.br.dao.DBBook" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.br.model.Book" %><%--
   Created by IntelliJ IDEA.
   User: felipe
   Date: 4/4/22
@@ -6,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <title>Title</title>
@@ -31,6 +34,31 @@
 <body>
 
 <div class="ListagemCard">
+
+    <table>
+        <thead>
+        <th>
+            Nome do Livro
+        </th>
+        <th>
+            Data de Publicação
+        </th>
+        <th>
+            E-mail do Autor
+        </th>
+        </thead>
+        <%
+            DBBook db = new DBBook();
+            ArrayList<Book> books = db.loadAll();
+        %>
+        <tbody>
+        <c:forEach items="${books}" var="item">
+            <tr>
+                <td><c:out value="${item}" /></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 
 </div>
 
