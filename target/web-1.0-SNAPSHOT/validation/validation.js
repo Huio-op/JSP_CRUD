@@ -1,23 +1,19 @@
 const validate = (form) => {
-    console.log(`na validacacac`, form)
-
 
     const formFields = form.serializeArray();
-    console.log('formmmmm', formFields)
     let error = { field: '', msg: '', isValid: true };
     $.each(formFields, (i, field) => {
+        console.log('cagoooooo', formFields)
         const validators = form[0][i].validity;
-
-        console.log(field, form[0][i].validity, form[0][i]);
 
         if (validators.typeMismatch) {
             error.isValid = false;
-            error.field = field.name;
+            error.field = form[0][i].dataset.name;
             error.msg = 'valor digitado não é valido para este campo';
             return false;
         } else if (field.value.length === 0) {
             error.isValid = false;
-            error.field = field.name;
+            error.field = form[0][i].dataset.name;
             error.msg = 'o campo não foi preenchido';
             return false;
         } else if (field.name === 'publishDate') {
@@ -26,21 +22,28 @@ const validate = (form) => {
             const age = today.getFullYear() - birthdate.getFullYear();
             if (age > 100) {
                 error.isValid = false;
-                error.field = field.name;
+                error.field = form[0][i].dataset.name;
                 error.msg = 'você não pode cadastar um livro publicado a mais de 100 anos';
                 return false;
             }
         } else if (field.name === 'email') {
             error = validateEmail(field.value);
             return false;
+        } else if (field.name === 'cpf') {
+            const validCPF = validateCPF(field.value);
+            console.log('aqui caralho porra merda', validCPF);
+            if (!validCPF) {
+                error.isValid = false;
+                error.field = form[0][i].dataset.name;
+                error.msg = 'CPF inválido';
+                return false;
+            }
         }
     });
 
-    console.log('aooooooo', error)
-
     if (error.isValid) {
-        return true;
         alert(`Seu cadasro foi concluído!`);
+        return true;
     } else {
         alert(`Erro na validação do campo de ${error.field}: ${error.msg}`);
         return false;
@@ -57,6 +60,29 @@ const validateEmail = (value) => {
     }
 
     return error;
+}
+
+const validateCPF = (cpf) => {
+    let cpfOnlyNum = cpf.replaceAll('-', '')
+    cpfOnlyNum = cpfOnlyNum.replaceAll('.', '');
+    let Soma;
+    let Resto;
+    Soma = 0;
+    if (cpfOnlyNum == "00000000000") return false;
+
+    for (i=1; i<=9; i++) Soma = Soma + parseInt(cpfOnlyNum.substring(i-1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(cpfOnlyNum.substring(9, 10)) ) return false;
+
+    Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(cpfOnlyNum.substring(i-1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(cpfOnlyNum.substring(10, 11) ) ) return false;
+    return true;
 }
 
 const cpfMask = (input) => {
