@@ -29,7 +29,7 @@
           rel="stylesheet">
 </head>
 <body>
-<a href="/" class="buttonWrapper">
+<a href="listagem" class="buttonWrapper">
     <button type="button" class="btn btn-primary backButton">
         <span class="material-icons">
         arrow_back
@@ -38,37 +38,38 @@
     </button>
 </a>
 <div class="BodyCard">
-    <form action="cadastro" method="post" onsubmit="return validate($('form'))">
-        <h1>Cadastre seu Livro</h1>
+    <form action="edit" method="post" onsubmit="return validate($(form))">
+        <h1>Edite o Livro</h1>
         <div class="mb-3">
             <label class="form-label">Nome do Livro</label>
-            <input type="text" class="form-control" name="bookName" data-name="nome do livro" />
+            <input type="text" class="form-control" name="bookName" value="${book.bookName}"/>
         </div>
         <div class="mb-3" style="width: 100%">
             <label class="control-label" id="campo">Data de Publicação</label>
-            <input type="date" class="form-control" name="publishDate" data-name="data de publicação" />
+            <input type="date" class="form-control" name="publishDate" value="${book.publishDate}" />
         </div>
         <div class="mb-3" style="width: 100%">
             <label class="control-label" id="campo">Nome do Autor</label>
-            <input type="text" class="form-control" name="authorName" data-name="nome do autor" />
+            <input type="text" class="form-control" name="authorName" value="${book.authorName}"/>
         </div>
         <div class="mb-3" style="width: 100%">
             <label class="control-label" id="campo">CPF do Autor</label>
-            <input id="cpf" type="text" class="form-control" name="cpf" maxlength="14" oninput="cpfMask(this)" data-name="CPF do autor" />
+            <input id="cpf" type="text" class="form-control" name="cpf" maxlength="11" oninput="cpfMask(this)" value="${book.cpf}" />
         </div>
         <div class="mb-3">
-            <label class="form-label">Email do Autor</label>
+            <label class="form-label">Email de Contato</label>
             <input
-                    type="text"
+                    type="email"
                     class="form-control"
                     name="email"
-                    data-name="email do autor"
+                    aria-describedby="emailHelp"
+                    value="${book.email}"
             />
         </div>
         <button type="submit" class="btn btn-primary">
-            Criar
+            Editar
         </button>
-        <a href="/">
+        <a href="listagem">
             <button type="button" class="btn btn-primary">
                 Cancelar
             </button>

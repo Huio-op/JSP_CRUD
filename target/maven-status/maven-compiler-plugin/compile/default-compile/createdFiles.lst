@@ -1,0 +1,5 @@
+com/br/model/Book.class
+com/br/dao/DBBook.class
+com/br/dao/DataBaseException.class
+com/br/web/CadastroServlet.class
+com/br/dao/DBConnection.class

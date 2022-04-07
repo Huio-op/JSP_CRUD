@@ -1,29 +1,23 @@
-html, body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+.BodyCard table {
+    font-size: 20px;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #2E4052 !important;
+.BodyCard th,
+.BodyCard td{
+    padding: 5px 15px;
+    border-bottom: 3px solid #2E4052;
 }
 
-.ListagemCard {
-    padding: 40px;
-    background: #68c3b7;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.ListagemCard th {
-    padding: 0 15px;
-}
-
-.ListagemCard th:not(th:last-of-type) {
+.BodyCard th:not(th:last-of-type),
+.BodyCard td:not(td:last-of-type){
     border-right: 3px solid #2E4052;
+}
+
+.actionsWrapper {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.actionCol form {
+    margin-bottom: 0;
 }

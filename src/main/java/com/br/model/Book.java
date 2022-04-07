@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Book {
 
+    public int id;
     private String cpf;
     private String bookName;
     private Date publishDate;
@@ -15,6 +16,15 @@ public class Book {
     }
 
     public Book(String cpf, String bookName, Date publishDate, String email, String authorName) {
+        this.cpf = cpf;
+        this.bookName = bookName;
+        this.publishDate = publishDate;
+        this.email = email;
+        this.authorName = authorName;
+    }
+
+    public Book(int id, String cpf, String bookName, Date publishDate, String email, String authorName) {
+        this.id = id;
         this.cpf = cpf;
         this.bookName = bookName;
         this.publishDate = publishDate;
@@ -60,5 +70,13 @@ public class Book {
 
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

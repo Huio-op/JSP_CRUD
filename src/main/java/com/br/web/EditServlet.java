@@ -4,17 +4,21 @@ import com.br.dao.DBBook;
 import com.br.dao.DataBaseException;
 import com.br.model.Book;
 
-import java.io.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
 
-@WebServlet(name = "cadastroServlet", value = {"/cadastro"})
-public class CadastroServlet extends HttpServlet {
+@WebServlet(name = "editServlet", value = {"/edit"})
+public class EditServlet extends HttpServlet {
+
     private String message;
     private DBBook dao;
+    private Book book;
 
     public void init() {
         message = "Hello World!";
@@ -25,17 +29,15 @@ public class CadastroServlet extends HttpServlet {
 
         String action = request.getServletPath();
 
-        if (action.equals("/edit")) {
-            int bookId = Integer.parseInt(request.getParameter("id"));
-            try {
-                Book book = dao.load(bookId);
-                getServletContext().setAttribute("book", book);
-            } catch (DataBaseException | SQLException e) {
-                e.printStackTrace();
-            }
+        int bookId = Integer.parseInt(request.getParameter("id"));
+        try {
+            this.book = dao.load(bookId);
+            getServletContext().setAttribute("book", book);
+        } catch (DataBaseException | SQLException e) {
+            e.printStackTrace();
         }
 
-        getServletContext().getRequestDispatcher("/pages/cadastro.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/pages/edit.jsp").forward(request,response);
 
     }
 
@@ -44,7 +46,6 @@ public class CadastroServlet extends HttpServlet {
 
         String action = request.getServletPath();
 
-        Book book = new Book();
         book.setCpf(request.getParameter("cpf"));
         book.setBookName(request.getParameter("bookName"));
         book.setPublishDate(Date.valueOf(request.getParameter("publishDate")));
@@ -52,7 +53,7 @@ public class CadastroServlet extends HttpServlet {
         book.setAuthorName(request.getParameter("authorName"));
 
         try {
-            if (dao.save(book)) {
+            if (dao.edit(book)) {
                 response.sendRedirect("listagem");
             }
         } catch (DataBaseException e) {
@@ -63,4 +64,5 @@ public class CadastroServlet extends HttpServlet {
 
     public void destroy() {
     }
+
 }

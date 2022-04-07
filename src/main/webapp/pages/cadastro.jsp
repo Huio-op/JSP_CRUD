@@ -7,6 +7,7 @@
 <head>
     <title>Cadastro</title>
     <link rel="stylesheet" href="/pages/cadastro.css" />
+    <link rel="stylesheet" href="/pages/global.css">
     <script src="../validation/validation.js" type="text/javascript"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -24,34 +25,44 @@
     ></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 </head>
 <body>
-<div class="CadastroCard">
-    <form action="cadastro" method="post" onsubmit="return validate($(form))">
+<a href="/" class="buttonWrapper">
+    <button type="button" class="btn btn-primary backButton">
+        <span class="material-icons">
+        arrow_back
+        </span>
+        <span>Voltar</span>
+    </button>
+</a>
+<div class="BodyCard">
+    <form action="cadastro" method="post" onsubmit="return validate($('form'))">
         <h1>Cadastre seu Livro</h1>
         <div class="mb-3">
             <label class="form-label">Nome do Livro</label>
-            <input type="text" class="form-control" name="bookName" />
+            <input type="text" class="form-control" name="bookName" data-name="nome do livro" />
         </div>
         <div class="mb-3" style="width: 100%">
             <label class="control-label" id="campo">Data de Publicação</label>
-            <input type="date" class="form-control" name="publishDate" />
+            <input type="date" class="form-control" name="publishDate" data-name="data de publicação" />
         </div>
         <div class="mb-3" style="width: 100%">
             <label class="control-label" id="campo">Nome do Autor</label>
-            <input type="text" class="form-control" name="authorName"/>
+            <input type="text" class="form-control" name="authorName" data-name="nome do autor" />
         </div>
         <div class="mb-3" style="width: 100%">
             <label class="control-label" id="campo">CPF do Autor</label>
-            <input id="cpf" type="text" class="form-control" name="cpf" maxlength="11" oninput="cpfMask(this)" />
+            <input id="cpf" type="text" class="form-control" name="cpf" maxlength="14" oninput="cpfMask(this)" data-name="CPF do autor" />
         </div>
         <div class="mb-3">
-            <label class="form-label">Email de Contato</label>
+            <label class="form-label">Email do Autor</label>
             <input
-                    type="email"
+                    type="text"
                     class="form-control"
                     name="email"
-                    aria-describedby="emailHelp"
+                    data-name="email do autor"
             />
         </div>
         <button type="submit" class="btn btn-primary">
@@ -59,7 +70,7 @@
         </button>
         <a href="/">
             <button type="button" class="btn btn-primary">
-                Voltar
+                Cancelar
             </button>
         </a>
     </form>
