@@ -3,7 +3,6 @@ const validate = (form) => {
     const formFields = form.serializeArray();
     let error = { field: '', msg: '', isValid: true };
     $.each(formFields, (i, field) => {
-        console.log('cagoooooo', formFields)
         const validators = form[0][i].validity;
 
         if (validators.typeMismatch) {
@@ -31,7 +30,6 @@ const validate = (form) => {
             return false;
         } else if (field.name === 'cpf') {
             const validCPF = validateCPF(field.value);
-            console.log('aqui caralho porra merda', validCPF);
             if (!validCPF) {
                 error.isValid = false;
                 error.field = form[0][i].dataset.name;

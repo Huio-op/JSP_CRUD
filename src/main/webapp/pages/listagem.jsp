@@ -12,6 +12,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="icon" href="/pages/resources/book-bookmark-icon_34486.ico">
     <link rel="stylesheet" href="/pages/listagem.css"/>
     <link rel="stylesheet" href="/pages/global.css">
     <script src="../validation/validation.js" type="text/javascript"></script>
@@ -82,8 +83,8 @@
                             </span>
                             </button>
                         </form>
-                        <form method="post" action="delete">
-                            <button name="id" value='${b.id}' title="Deletar" class="btn btn-danger">
+                        <form method="post" action="delete" onsubmit="return window.confirm('Tem certeza que deseja excluir o livro ${b.bookName}?')">
+                            <button name="id" value='${b.id}' title="Deletar" class="btn btn-danger" onclick="confirmDelete()">
                             <span class="material-icons">
                                 delete
                             </span>

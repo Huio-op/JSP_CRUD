@@ -5,7 +5,8 @@
 <%@ page import="com.br.model.Book" %>
 <html>
 <head>
-    <title>Cadastro</title>
+    <title>Edição</title>
+    <link rel="icon" href="/pages/resources/book-bookmark-icon_34486.ico">
     <link rel="stylesheet" href="/pages/cadastro.css" />
     <link rel="stylesheet" href="/pages/global.css">
     <script src="../validation/validation.js" type="text/javascript"></script>

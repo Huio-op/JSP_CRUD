@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>HOME</title>
+    <title>Banco de Livros-Home</title>
+    <link rel="icon" href="/pages/resources/book-bookmark-icon_34486.ico">
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="/pages/global.css">
     <link
@@ -19,7 +20,7 @@
 <body>
 <div class="HomeCard">
     <h1>
-        HOME
+        Banco de Livros
     </h1>
     <ul class="buttonUl">
         <div class="linksWrapper">

@@ -1,3 +1,8 @@
+body {
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
+
 .BodyCard table {
     font-size: 20px;
 }
@@ -20,4 +25,9 @@
 
 .actionCol form {
     margin-bottom: 0;
+}
+
+.BodyCard {
+    top: 5%;
+    position: relative;
 }
